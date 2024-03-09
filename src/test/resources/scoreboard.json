@@ -1,0 +1,28 @@
+[ {
+"homeTeam" : {
+"name" : "Home1",
+"score" : 2
+},
+"awayTeam" : {
+"name" : "Away1",
+"score" : 1
+}
+}, {
+"homeTeam" : {
+"name" : "Home3",
+"score" : 1
+},
+"awayTeam" : {
+"name" : "Away3",
+"score" : 1
+}
+}, {
+"homeTeam" : {
+"name" : "Home2",
+"score" : 1
+},
+"awayTeam" : {
+"name" : "Away2",
+"score" : 1
+}
+} ]
