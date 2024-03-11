@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static util.TestUtils.getExpectedScoreboard;
 
 public class ScoreboardTest {
 
@@ -29,7 +30,7 @@ public class ScoreboardTest {
     }
 
     @Test
-    public void testHomeTeamGoalWin() {
+    public void testHomeTeamMatchWin() {
         Team homeTeam = new Team("Home");
         Team awayTeam = new Team("Away");
         Match match = new Match(homeTeam, awayTeam);
@@ -83,7 +84,6 @@ public class ScoreboardTest {
         // 3rd Match
         homeTeam3.scoreGoal();
         awayTeam3.scoreGoal();
-        System.out.println(new Timestamp(System.currentTimeMillis()));
         List<Match> actualScoreboard = scoreboard.getScoreboard();
         ObjectWriter mapper = new ObjectMapper().writer().withDefaultPrettyPrinter();
         JSONAssert.assertEquals(
@@ -93,7 +93,7 @@ public class ScoreboardTest {
     }
 
     @Test
-    public void testScoreboardSummaryWithEndedMatch() throws IOException, JSONException {
+    public void testScoreboardSummaryWithEndedMatch() throws IOException, JSONException, InterruptedException {
         Team homeTeam1 = new Team("Home1");
         Team awayTeam1 = new Team("Away1");
         Team homeTeam2 = new Team("Home2");
@@ -102,7 +102,9 @@ public class ScoreboardTest {
         Team awayTeam3 = new Team("Away3");
         Scoreboard scoreboard = new Scoreboard();
         Match match1 = new Match(homeTeam1, awayTeam1);
+        Thread.sleep(100);
         Match match2 = new Match(homeTeam2, awayTeam2);
+        Thread.sleep(100);
         Match match3 = new Match(homeTeam3, awayTeam3);
         scoreboard.addMatch(match1);
         scoreboard.addMatch(match2);
@@ -124,16 +126,5 @@ public class ScoreboardTest {
                 getExpectedScoreboard("scoreboard_ended_match.json"),
                 mapper.writeValueAsString(actualScoreboard),
                 JSONCompareMode.STRICT_ORDER);
-    }
-
-    /**
-     * Fetch JSON String from resources file
-     *
-     * @param fileName
-     * @return JSON String
-     */
-    public String getExpectedScoreboard(String fileName) throws IOException {
-        File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).getFile());
-        return FileUtils.readFileToString(file, StandardCharsets.UTF_8);
     }
 }
