@@ -1,5 +1,8 @@
 package org.score;
 
+/**
+ * This class stores the team name and the goals scored by them.
+ */
 public class Team {
     private String name;
     private int score;

@@ -1,12 +1,10 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package org.score;
 
 import java.sql.Timestamp;
 
+/**
+ * This class stores the home & away team objects and their match start time.
+ */
 public class Match {
     private Team homeTeam;
     private Team awayTeam;
