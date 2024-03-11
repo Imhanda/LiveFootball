@@ -12,7 +12,7 @@ import java.util.List;
  * This class stores the list of Live matches.
  */
 public class Scoreboard {
-    private List<Match> matches = new ArrayList();
+    private List<Match> matches = new ArrayList<>();
 
     public Scoreboard() {
     }
@@ -46,13 +46,5 @@ public class Scoreboard {
             return m1.getTotalGoals() == m2.getTotalGoals() ? m2.getCreatedAt().compareTo(m1.getCreatedAt()) : Integer.compare(m2.getTotalGoals(), m1.getTotalGoals());
         });
         return this.matches;
-    }
-
-    public List<Match> getMatches() {
-        return this.matches;
-    }
-
-    public void setMatches(List<Match> matches) {
-        this.matches = matches;
     }
 }
