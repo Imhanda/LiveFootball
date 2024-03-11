@@ -12,7 +12,7 @@ public class TestUtils {
     /**
      * Fetch JSON String from resources file
      *
-     * @param fileName
+     * @param fileName - Name of the file to be fetched from the test/resources folder
      * @return JSON String
      */
     public static String getExpectedScoreboard(String fileName) throws IOException {
